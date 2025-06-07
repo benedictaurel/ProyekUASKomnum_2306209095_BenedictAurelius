@@ -1,57 +1,55 @@
-# Penerapan Metode Muller untuk Mencari Akar Persamaan Transendental
+# Pemodelan Pendinginan Kopi Menggunakan Metode Euler
 ```
 Nama: Benedict Aurelius
 NPM: 2306209095
 ```
 ## Deskripsi Program
-Program ini mengimplementasikan **Metode Muller**, sebuah metode numerik iteratif yang digunakan untuk mencari akar dari suatu fungsi. Metode ini sangat berguna terutama untuk menemukan akar dari **persamaan transendental** yang sulit atau tidak mungkin diselesaikan secara analitik.
+Program ini mengimplementasikan **Metode Euler**, sebuah metode numerik yang digunakan untuk **menyelesaikan persamaan diferensial biasa (PDB) dengan nilai awal**. Metode ini sangat fundamental dalam analisis numerik untuk memodelkan sistem dinamis yang perubahannya dapat dideskripsikan oleh suatu laju.
 
-Studi kasus yang diimplementasikan dalam program ini adalah pencarian akar dari persamaan:
+Studi kasus yang diimplementasikan dalam program ini adalah **pemodelan suhu secangkir kopi yang mendingin seiring waktu, yang dijelaskan oleh Hukum Pendinginan Newton**. Persamaan utama yang menjadi fokus adalah:
 
-$\qquad f(x) = e^{-x} - \cos(x) = 0$
+$$\frac{dT}{dt} = -k(T - T_a)$$
 
-Keunggulan Metode Muller adalah **tidak memerlukan perhitungan turunan fungsi**, yang seringkali rumit atau tidak praktis untuk fungsi transendental seperti contoh di atas. Metode ini bekerja dengan melakukan interpolasi kuadratik (parabola) melalui tiga tebakan awal dan menggunakan akar dari parabola tersebut sebagai aproksimasi akar fungsi yang sebenarnya.
+Metode Euler bekerja secara iteratif dengan mengambil langkah-langkah kecil sepanjang waktu dan menggunakan laju perubahan (garis singgung) pada setiap titik untuk memperkirakan suhu pada titik waktu berikutnya.
 
 ## Cara Compile dan Run Program
 ### Prasyarat
-* **Compiler C:** Pastikan sistem anda memiliki compiler C (misalnya, GCC) terinstal.
-* **Library Math:** Program ini menggunakan fungsi-fungsi matematika dari library `math.h` (untuk `exp` dan `cos`) dan `complex.h` (untuk bilangan kompleks dan akar kuadrat kompleks `csqrt`). Pastikan library ini tersedia dalam lingkungan kompilasi anda.
+* **Compiler C:** Pastikan sistem Anda memiliki compiler C (misalnya, GCC) yang terinstal.
 
 ### Langkah-langkah
-1.  **Download Zip:** Anda dapat mengunduh kode sumber program ini dalam format zip dari repositori atau tautan yang diberikan. Ekstrak file zip tersebut untuk mendapatkan file `muller.c`. Atau, anda dapat membuat file baru dengan nama `muller.c` dan menyalin kode tersebut ke dalamnya.
+1.  **Unduh atau Salin Kode:** Simpan kode sumber dari repositori ini dalam sebuah file dengan nama `euler_cooling.c`.
 
-2.  **Compile Program:** Buka terminal atau command prompt pada direktori tempat anda menyimpan file `muller.c` dan gunakan perintah berikut untuk mengkompilasi program:
+2.  **Compile Program:** Buka terminal atau *command prompt* pada direktori tempat Anda menyimpan file `.c` dan gunakan perintah berikut untuk mengkompilasi program:
 
     ```bash
-    gcc muller.c -o muller -lm
+    gcc euler.c -o euler
     ```
 
     * `gcc`: adalah perintah untuk compiler GCC.
-    * `muller.c`: adalah nama file kode sumber anda.
-    * `-o muller`: menentukan nama file output executable menjadi `muller`.
-    * `-lm`: menghubungkan (link) dengan library matematika (`libm.so`) yang diperlukan untuk fungsi `exp`, `cos`, dan fungsi matematika lainnya.
+    * `euler.c`: adalah nama file kode sumber Anda.
+    * `-o euler`: menentukan nama file output yang akan dieksekusi.
 
-3.  **Jalankan Program:** Setelah kompilasi berhasil, anda dapat menjalankan program dengan perintah:
+3.  **Jalankan Program:** Setelah kompilasi berhasil, Anda dapat menjalankan program dengan perintah:
 
     ```bash
-    ./muller
+    ./euler
     ```
 
-    Program akan meminta anda untuk memasukkan nilai-nilai berikut:
-    * Tebakan awal (`xr`)
-    * Langkah relatif (`h`)
-    * Toleransi relatif (`eps`)
-    * Jumlah iterasi maksimum (`maxit`)
+    Program akan meminta Anda untuk memasukkan nilai-nilai berikut:
+    * Suhu awal kopi (`T0`)
+    * Suhu ruangan/ambien (`Ta`)
+    * Waktu akhir simulasi (`t_akhir`)
+    * Ukuran langkah/interval waktu (`h`)
 
-    Masukkan nilai-nilai yang sesuai dan tekan Enter setelah setiap input.
+    Masukkan nilai yang sesuai dan tekan Enter setelah setiap input.
 
 ## Hasil Output Program
-![Output](https://hackmd.io/_uploads/Sk5AbgvGlx.png)
+![Output](https://hackmd.io/_uploads/HJnEr8b7gg.png)
 
 ## Grafik Plot
-![Grafik](https://hackmd.io/_uploads/B1MKElwMle.png)
+![Grafik](https://hackmd.io/_uploads/rJ28BUbXlg.png)
 
 ## Penjelasan Kode
-Untuk penjelasan yang lebih mendalam mengenai teori di balik Metode Muller, implementasi kode, dan analisis hasil, Anda dapat menonton video berikut:
+Untuk penjelasan yang lebih mendalam mengenai teori di balik Metode Euler, implementasi kode, dan analisis hasil, Anda dapat menonton video berikut:
 
-[![Video Penjelasan](https://img.youtube.com/vi/iXdjCH2kYyc/0.jpg)](https://www.youtube.com/watch?v=iXdjCH2kYyc)
+[![Video Penjelasan](https://img.youtube.com/vi/PpI-Qo33NwE/0.jpg)](https://www.youtube.com/watch?v=PpI-Qo33NwE)
